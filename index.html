@@ -1,0 +1,107 @@
+# <!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALIF TOP UP</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090d19;color:white;font-family:Arial,sans-serif}
+header{background:#151c31;padding:18px;text-align:center}
+header h1{color:#42e8ff;margin:0}
+nav{padding:14px;text-align:center;background:#101729}
+nav a{color:white;margin:8px;text-decoration:none}
+.hero{padding:35px 15px;text-align:center;background:linear-gradient(135deg,#171d42,#092e45)}
+.hero h2{color:#49eaff;font-size:28px}
+.container{max-width:650px;margin:auto;padding:15px}
+.card{background:#151d30;padding:18px;margin:15px 0;border-radius:14px}
+input{width:100%;padding:14px;margin:9px 0;border:1px solid #34435d;border-radius:8px;background:#0c1424;color:white}
+.packages{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.package{background:#202b45;padding:15px;border-radius:10px;text-align:center;cursor:pointer;border:2px solid transparent}
+.package.selected{border-color:#42e8ff}
+button{width:100%;padding:14px;border:0;border-radius:9px;background:#16c8dc;color:#06101b;font-weight:bold;font-size:16px;cursor:pointer}
+small{color:#b9c8df}
+footer{text-align:center;padding:25px;color:#aab6c9}
+</style>
+</head>
+<body>
+<header>
+<h1>💎 ALIF TOP UP</h1>
+<small>Fast & Trusted Gaming Top Up</small>
+</header>
+<nav>
+<a href="#home">Home</a>
+<a href="#topup">Top Up</a>
+<a href="#track">Track Order</a>
+</nav>
+<section class="hero" id="home">
+<h2>FREE FIRE DIAMOND TOP UP</h2>
+<p>আপনার পছন্দের Diamond কিনুন সহজেই!</p>
+</section>
+<div class="container">
+<section class="card" id="topup">
+<h2>💎 Diamond Top Up</h2>
+<label>Free Fire Player UID</label>
+<input id="uid" placeholder="আপনার Player UID লিখুন">
+<label>Diamond Package নির্বাচন করুন</label>
+<div class="packages" id="packages">
+<div class="package selected" data-price="25" data-name="25 Diamonds">25 💎<br>৳ 25</div>
+<div class="package" data-price="50" data-name="50 Diamonds">50 💎<br>৳ 50</div>
+<div class="package" data-price="100" data-name="115 Diamonds">115 💎<br>৳ 100</div>
+<div class="package" data-price="200" data-name="240 Diamonds">240 💎<br>৳ 200</div>
+<div class="package" data-price="450" data-name="610 Diamonds">610 💎<br>৳ 450</div>
+<div class="package" data-price="850" data-name="1240 Diamonds">1240 💎<br>৳ 850</div>
+</div>
+<br>
+<label>Payment Method</label>
+<select id="payment" style="width:100%;padding:13px;background:#0c1424;color:white;border-radius:8px">
+<option value="bKash">bKash</option>
+<option value="Nagad">Nagad</option>
+<option value="Rocket">Rocket</option>
+</select>
+<br><br>
+<label>Transaction ID</label>
+<input id="trx" placeholder="Payment Transaction ID">
+<button onclick="order()">অর্ডার করুন</button>
+<p id="message"></p>
+</section>
+<section class="card" id="track">
+<h2>📦 Order Tracking</h2>
+<input id="orderid" placeholder="Order ID লিখুন">
+<button onclick="track()">Track Order</button>
+<p id="status"></p>
+</section>
+</div>
+<footer>© 2026 ALIF TOP UP | All Rights Reserved</footer>
+<script>
+let selected=document.querySelector('.package');
+document.querySelectorAll('.package').forEach(p=>{
+p.onclick=()=>{
+selected.classList.remove('selected');
+selected=p;
+p.classList.add('selected');
+};
+});
+function order(){
+let uid=document.getElementById('uid').value.trim();
+let trx=document.getElementById('trx').value.trim();
+if(!/^[0-9]{5,15}$/.test(uid)){
+alert('সঠিক Player UID দিন');
+return;
+}
+if(!trx){
+alert('Transaction ID দিন');
+return;
+}
+let id='ALIF'+Date.now().toString().slice(-8);
+document.getElementById('message').innerHTML=
+'অর্ডার গ্রহণের জন্য প্রস্তুত! Order ID: '+id+
+'<br>পেমেন্ট যাচাই ও ডেলিভারি এখনো চালু হয়নি।';
+}
+function track(){
+document.getElementById('status').innerText=
+'এই ডেমোতে অর্ডার ট্র্যাকিং চালু হয়নি।';
+}
+</script>
+</body>
+  </html>
